@@ -1,7 +1,7 @@
 import { slotTime } from "../utils/data";
 import RadioComponent from "./RadioComponent";
 
-const SelectTiming = ({ setTime }) => {
+const SelectTiming = ({ setTime, selectedTime }) => {
   const handleRadioClick = (time) => {
     setTime(time);
   };
@@ -15,6 +15,7 @@ const SelectTiming = ({ setTime }) => {
             text={time}
             key={i}
             sendDataToParent={handleRadioClick}
+            selected={selectedTime}
           />
         ))}
       </div>

@@ -3,16 +3,29 @@ import LastBooking from "../components/LastBooking";
 import SelectMovie from "../components/SelectMovie";
 import SelectSeat from "../components/SelectSeat";
 import SelectTiming from "../components/SelectTiming";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const Home = () => {
-  const getToast = () => {
-    // toast.success("Ticket booked successfully!");
+  const sendData = async () => {
     const request = {
       movie: movie,
-      time: time,
-      selectedSeats: selectedSeats,
+      slot: time,
+      seats: selectedSeats,
     };
+
+    if (request.movie === "" || request.movie === "")
+      return toast.error("Please select a movie or time");
+
+    await axios
+      .post("http://localhost:8080/booking", request)
+      .then(() => {
+        toast.success("Ticket booked");
+      })
+      .catch((err) => {
+        toast.error("Failed to book ticket");
+        console.error(err);
+      });
 
     console.log(request);
   };
@@ -37,7 +50,7 @@ const Home = () => {
       <button
         className="
       mt-28 text-neutral-800 font-bold px-8 py-4 bg-orange-400 rounded-lg active:scale-95 transition-transform ease-out"
-        onClick={getToast}
+        onClick={sendData}
       >
         Book my ticket
       </button>

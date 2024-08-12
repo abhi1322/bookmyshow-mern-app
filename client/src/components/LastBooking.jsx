@@ -11,7 +11,6 @@ const LastBooking = () => {
       .get("http://localhost:8080/booking")
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
         const { seats } = data;
       })
       .catch((err) => {
@@ -21,7 +20,7 @@ const LastBooking = () => {
 
   useEffect(() => {
     getLastBooking();
-  }, []);
+  }, [data]);
 
   return (
     <div className="border text-xl  p-8 rounded-lg shadow-lg">
@@ -34,7 +33,7 @@ const LastBooking = () => {
       </p>
       <div>
         <p className="mt-4 text-xl font-bold">Seats :</p>
-        <div className="mt-4 [&>span]:text-xl flex flex-wrap text-nowrap gap-2 [&>span]:bg-cyan-100 [&>span]:p-2 [&>span]:rounded-lg">
+        <div className="mt-4 [&>span]:text-xl flex flex-wrap text-nowrap gap-2 [&>span]:bg-orange-200 [&>span]:p-2 [&>span]:rounded-lg">
           {seats.map((key, val) => (
             <span key={key} className="block text-sm mb-2">
               <b>{key} : </b>

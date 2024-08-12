@@ -1,7 +1,7 @@
 import { movieList } from "../utils/data";
 import RadioComponent from "./RadioComponent";
 
-const SelectMovie = ({ setMovie }) => {
+const SelectMovie = ({ setMovie, selectedMovie }) => {
   const handleRadioClick = (movie) => {
     setMovie(movie);
   };
@@ -15,6 +15,7 @@ const SelectMovie = ({ setMovie }) => {
             text={movie}
             key={i}
             sendDataToParent={handleRadioClick}
+            selected={selectedMovie}
           />
         ))}
       </div>
