@@ -7,6 +7,10 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
 const Home = () => {
+  const [movie, setMovie] = useState(null);
+  const [time, setTime] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState({});
+
   const sendData = async () => {
     const request = {
       movie: movie,
@@ -14,8 +18,15 @@ const Home = () => {
       seats: selectedSeats,
     };
 
-    if (request.movie === "" || request.movie === "")
+    if (
+      request.movie === "" ||
+      request.slot === "" ||
+      request.movie === null ||
+      request.slot === null
+    )
       return toast.error("Please select a movie or time");
+
+    console.log(request);
 
     await axios
       .post("http://localhost:8080/booking", request)
@@ -27,12 +38,10 @@ const Home = () => {
         console.error(err);
       });
 
-    console.log(request);
+    // setMovie(null);
+    // setTime(null);
+    // setSelectedSeats({});
   };
-
-  const [movie, setMovie] = useState(null);
-  const [time, setTime] = useState(null);
-  const [selectedSeats, setSelectedSeats] = useState({});
 
   return (
     <div className="p-16">

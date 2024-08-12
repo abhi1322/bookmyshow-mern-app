@@ -11,8 +11,8 @@ const LastBooking = () => {
       .get("http://localhost:8080/booking")
       .then((res) => {
         setData(res.data);
-        const { seats } = data;
       })
+
       .catch((err) => {
         toast.error(err);
       });
@@ -34,12 +34,30 @@ const LastBooking = () => {
       <div>
         <p className="mt-4 text-xl font-bold">Seats :</p>
         <div className="mt-4 [&>span]:text-xl flex flex-wrap text-nowrap gap-2 [&>span]:bg-orange-200 [&>span]:p-2 [&>span]:rounded-lg">
-          {seats.map((key, val) => (
-            <span key={key} className="block text-sm mb-2">
-              <b>{key} : </b>
-              {val}
-            </span>
-          ))}
+          <span>
+            <b>A1 : </b>
+            {data.seats?.A1}
+          </span>
+          <span>
+            <b>A2 : </b>
+            {data.seats?.A2}
+          </span>
+          <span>
+            <b>A3 : </b>
+            {data.seats?.A3}
+          </span>
+          <span>
+            <b>A4 : </b>
+            {data.seats?.A4}
+          </span>
+          <span>
+            <b>D1 : </b>
+            {data.seats?.D1}
+          </span>
+          <span>
+            <b>D2 : </b>
+            {data.seats?.D2}
+          </span>
         </div>
       </div>
     </div>

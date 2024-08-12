@@ -3,7 +3,6 @@ import { seats } from "../utils/data";
 
 const SelectSeat = ({ setSelectedSeats }) => {
   const [seatsData, setSeatsData] = useState({
-    //loop to add seats in object
     A1: 0,
     A2: 0,
     A3: 0,
@@ -15,7 +14,7 @@ const SelectSeat = ({ setSelectedSeats }) => {
   const handleSeats = (e) => {
     const { name, value } = e.target;
     setSeatsData((prev) => ({ ...prev, [name]: parseInt(value) }));
-    setSelectedSeats((prev) => seatsData);
+    setSelectedSeats(() => seatsData);
   };
 
   return (
