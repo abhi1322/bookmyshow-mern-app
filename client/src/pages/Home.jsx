@@ -38,13 +38,13 @@ const Home = () => {
         console.error(err);
       });
 
-    // setMovie(null);
-    // setTime(null);
-    // setSelectedSeats({});
+    setMovie(null);
+    setTime(null);
+    setSelectedSeats({});
   };
 
   return (
-    <div className="p-16">
+    <div className="p-4 sm:p-16 border-2 rounded-2xl flex flex-col">
       <Toaster reverseOrder={true} position="top-center" />
       <div className="flex flex-wrap gap-8 justify-between mb-7">
         <SelectMovie setMovie={setMovie} selectedMovie={movie} />
@@ -58,7 +58,7 @@ const Home = () => {
 
       <button
         className="
-      mt-28 text-neutral-800 font-bold px-8 py-4 bg-orange-400 rounded-lg active:scale-95 transition-transform ease-out"
+      mt-28  text-neutral-800 font-bold px-8 py-4 bg-orange-400 rounded-lg active:scale-95 transition-transform ease-out"
         onClick={sendData}
       >
         Book my ticket
