@@ -3,16 +3,16 @@ const BookingSchema = new mongoose.Schema({
   movie: {
     type: String,
   },
-  time: {
+  slot: {
     type: String,
   },
-  selectedSeats: {
-    A1: { type: Number, default: 0 },
-    A2: { type: Number, default: 0 },
-    A3: { type: Number, default: 0 },
-    A4: { type: Number, default: 0 },
-    D1: { type: Number, default: 0 },
-    D2: { type: Number, default: 0 },
+  seats: {
+    A1: { type: Number },
+    A2: { type: Number },
+    A3: { type: Number },
+    A4: { type: Number },
+    D1: { type: Number },
+    D2: { type: Number },
   },
 });
 
